@@ -1,45 +1,44 @@
 //Input stock.json "sku" to find current stocks level of given "sku" after transactions.
 //In background I sort all "SkUS" stocks level after transactions realtime. (*Additional feature)
-
 const jsonfile = require("jsonfile");
-const stock = "stock.json";
-const transactions = "transactions.json";
+const x = "stock.json";
+const y = "transactions.json";
 
-//function declaration
-function stocks(sku){
-  
-  var x = jsonfile.readFileSync(stock);//stock.json
-  var y = jsonfile.readFileSync(transactions);//transactions.js
-  var totalStock;
-  var stockValue;
-  var finalStock;
-  var lengthX = x.length;
-  var lengthy = y.length;
+var stock = jsonfile.readFileSync(x);//stock.json
+var transaction = jsonfile.readFileSync(y);//transactions.js
+var totalStock;
+var stockValue;
+var finalStock;
+var lengthX = stock.length;
+var lengthy = transaction.length;
 
-  //calculating stock volume
-  for (var j = 0; j < lengthX; j++) {
-    stockValue = x[j].stock;
-    totalStock = stockValue;
-    for (var i = 0; i < lengthy - 1; i++) {
-      y[i].sku ==  x[j].sku?(y[i].type == "refund"?(totalStock = totalStock + y[i].qty):(totalStock = totalStock - y[i].qty)):y[i].sku
-      finalStock = totalStock;
-    }
-     x[j].stock = finalStock;
+
+function calculateData(stock,transaction){
+//calculating stock volume
+for (var j = 0; j < lengthX; j++) {
+  stockValue = stock[j].stock;
+  totalStock = stockValue;
+  for (var i = 0; i < lengthy - 1; i++) {
+    transaction[i].sku ==  stock[j].sku?(transaction[i].type == "refund"?(totalStock = totalStock + transaction[i].qty):(totalStock = totalStock - transaction[i].qty)):transaction[i].sku
+    finalStock = totalStock;
   }
+   stock[j].stock = finalStock;
+}
+}
 
+
+function emptyData(){
   //'empty' stock checking
+for(var i=0; i<lengthX;i++){stock[i].stock < 0?(stock[i].stock = "empty"):stock[i].stock}
+}
+
+
+function stocks(sku){
+  // console.log("All Inventory SKU Current level:",stock)
   for(var i=0; i<lengthX;i++)
   {
-    x[i].stock < 0?(x[i].stock = "empty"):x[i].stock
-  }
-
-  //to watch all "SKUS-Current-Stock-Level" computed realtime by passing jsons, Enable following comment: "
-  // console.log("All Inventory SKU Current level:",x)
-
-  for(var i=0; i<lengthX;i++)
-  {
-    if(sku == x[i].sku){
-      console.log("SKU Current Stock Level : ",x[i])
+    if(sku == stock[i].sku){
+      console.log("SKU Current Stock Level : ",stock[i])
       return
     }
     else sku
@@ -49,5 +48,11 @@ function stocks(sku){
 }
 
 
+function output(){
+  calculateData(stock,transaction)
+  emptyData()
+  stocks("LTV719449/39/39")
+}
+
+output()
 //function call, Passing SKU(from stocks.json) to find current stock level after transactions
-stocks("EMN370166/29/48")
