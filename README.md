@@ -8,8 +8,7 @@ Simple hello world project for running TypeScript with Node.js
 
 ## Running the Project
 
-1. tsc app.ts
-2. node app.ts
+1. node app.ts
 
 ## Debugging the Project
 
