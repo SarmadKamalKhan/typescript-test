@@ -1,6 +1,6 @@
 {
   "files": [
-    "app.ts",
+    "src/app.ts",
   ],
   "compilerOptions": {
     "resolveJsonModule" : true,
