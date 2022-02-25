@@ -1,6 +1,6 @@
 const jsonfiles = require("jsonfile");
 
-export default function calculateData(sku){
+function calculateData(sku){
 var stock = jsonfiles.readFileSync("../db/stock.json");//stock.json
 var transaction = jsonfiles.readFileSync("../db/transactions.json");//transactions.js
 var totalStock,stockValue,finalStock;
