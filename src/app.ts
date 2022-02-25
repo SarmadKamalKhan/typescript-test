@@ -1,15 +1,10 @@
-//Input stock.json "sku" to find current stocks level of given "sku" after transactions.
-//In background I sort all "SkUS" stocks level after transactions realtime. (*Additional feature)
-const jsonfile = require("jsonfile");
-const x = "../db/stock.json";
-const y = "../db/transactions.json";
+const jsonfiles = require("jsonfile");
 
-var stock = jsonfile.readFileSync(x);//stock.json
-var transaction = jsonfile.readFileSync(y);//transactions.js
+export default function calculateData(sku){
+var stock = jsonfiles.readFileSync("../db/stock.json");//stock.json
+var transaction = jsonfiles.readFileSync("../db/transactions.json");//transactions.js
 var totalStock,stockValue,finalStock;
 
-
-function calculateData(sku){
 //calculating stock volume
   stockValue = stock.find(element => element.sku == sku);
   totalStock = stockValue.stock;
@@ -18,22 +13,12 @@ function calculateData(sku){
     finalStock = totalStock;
   }
   stockValue.stock = finalStock;
+  stockValue.stock < 0?(stockValue.stock = "empty"):stockValue.stock
+  console.log(stockValue)
 }
-
-function emptyData(){
-  //'empty' stock checking
-stockValue.stock < 0?(stockValue.stock = "empty"):stockValue.stock
-}
-
 
 
 //Testing skus
 //DTW874360/97/81
 //LTV719449/39/39
-function output(){
-  calculateData("DTW874360/97/81")
-  emptyData()
-  console.log(stockValue)
-}
-
-output()
+calculateData("DTW874360/97/81")
