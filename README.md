@@ -4,11 +4,13 @@ Simple hello world project for running TypeScript with Node.js
 
 ## Running the Project
 
-1. Run `npm install`
+1. Run `yarn install`
+2. Run `yarn test`
 
 ## Running the Project
 
-1. node app.ts
+1. node App.ts
+2. Run `yarn test`
 
 ## Debugging the Project
 
