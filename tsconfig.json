@@ -1,12 +1,21 @@
 {
   "files": [
-    "app.ts",
+    "src/App.ts",
+    "test/src/App.test.ts"
   ],
   "compilerOptions": {
     "resolveJsonModule" : true,
-    "target": "es5",
     "module": "commonjs",
     "outDir": "out",
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "allowJs": true,
+    "target": "es6",
+    "esModuleInterop": true
+  },
+  "include": [
+    "./src/**/*"
+],
+"exclude": [
+  "node_modules"
+]
 }
