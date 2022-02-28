@@ -4,8 +4,7 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "tsc": "tsc",
-    "test":"jest"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +22,6 @@
   "dependencies": {
     "jest": "^27.5.1",
     "jsonfile": "^6.1.0",
-    "ts-node": "^10.5.0",
-    "tsc": "^2.0.4"
+    "ts-node": "^10.5.0"
   }
 }
