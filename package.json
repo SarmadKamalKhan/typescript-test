@@ -4,7 +4,10 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "test": "jest"
+    "test": "yarn lint:types && jest --no-cache",
+    "lint": "eslint . --ext .ts",
+    "lint:types": "yarn tsc --noEmit -p .",
+    "lint:ci": "eslint . --ext .tsx,.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,12 +19,13 @@
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "eslint": "^6.1.0",
-    "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"
   },
   "dependencies": {
     "jest": "^27.5.1",
+    "jest-mock-promise": "^2.0.2",
     "jsonfile": "^6.1.0",
+    "ts-jest": "^27.1.3",
     "ts-node": "^10.5.0"
   }
 }
