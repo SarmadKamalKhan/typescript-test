@@ -1,6 +1,7 @@
 {
   "files": [
-    "src/app.ts",
+    "src/App.ts",
+    "test/src/App.test.ts"
   ],
   "compilerOptions": {
     "resolveJsonModule" : true,
@@ -13,5 +14,8 @@
   },
   "include": [
     "./src/**/*"
+],
+"exclude": [
+  "node_modules"
 ]
 }
