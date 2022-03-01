@@ -6,10 +6,11 @@ import calculateData from "../../src/App"
 
 describe('Stocklevel working',(): void=>{
    
-    it('If given value not in records',(): void=>{
-        expect(calculateData("LTV719449/39/")
-        ).toBe(null);
-    })
+    it('If given value not in records', async(): Promise<void> =>{
+        const x= await calculateData("LTV719449/39/");
+        expect(x).toBe(null);
+        
+    }) 
     it('If stocks Empty after transactions',(): void=>{
         expect(calculateData("DTW874360/97/81")
         ).toEqual({"sku": "DTW874360/97/81", "stock": 0});
